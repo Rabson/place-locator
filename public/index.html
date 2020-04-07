@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css" rel="stylesheet" />
+  <title>Place Locator</title>
+  <style>
+    /* nav {
+      height: 10vh;
+    }
+    main {
+      height: 90vh;
+    } */
+  </style>
+</head>
+
+<body>
+<div class="">
+  <nav class="navbar navbar-bottom navbar-expand-lg navbar-primary bg-dark">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-map-marked mr-4"></i>Place Locator
+      </a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="add.html" class="nav-link">Add Place</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-primary mr-sm-2" onclick="getNearBy()">Near Me</button>
+      <form class="form-inline my-2 my-lg-0" id="search-form" onsubmit="findPlace()">
+        <input class="form-control mr-sm-2" id="search-input" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+    
+  </nav>
+
+  <main class="container my-3">
+
+    <div class="row justify-content-between" >
+      <div class="col-lg-2">
+        <div class="card" style="width: 18rem;;height: 80vh;">
+          <div class="card-header text-center">
+            List
+          </div>
+          <ul id="list" class="list-group list-group-flush"  style="overflow-y: scroll">
+          </ul>
+        </div>
+      </div>
+
+      <!-- map render -->
+      <div id="map" class="col-lg-8" style="border-radius: 5px;">
+      </div>
+
+    </div>
+
+  </main>
+</div>  
+  <script src="js/map.js"></script>
+</body>
+
+</html>
