@@ -1,6 +1,6 @@
 let map;
-let lat = 42.707741;
-let lon = -71.157895;
+let lat = "";
+let lon = "";
 let list = []
 mapboxgl.accessToken =
   'pk.eyJ1IjoieW9nZXNobmlzaGFkIiwiYSI6ImNrOG85ZHQ1NDAwcXMzbG5zd3YwbGlxZ3YifQ.H0dNSfwjRxTl2kBBIPV1zg';
@@ -8,21 +8,21 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function (position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-    initMap([lon, lat])
+    initMap(lon, lat)
   })
 }
 
-function initMap(coordinates = [-71.157895, 42.707741]) {
+function initMap(longitude = -71.157895, latitude = 42.707741) {
   map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     zoom: 12,
-    center: coordinates
+    center: [longitude, latitude]
   });
   getPlaces();
 }
 
-initMap()
+// initMap()
 
 // Fetch places from API
 async function getPlaces() {
@@ -98,9 +98,10 @@ function mapListRender(data) {
           </button>
       </li>`).join("");
 
-    }
-  listCard.innerHTML  = "";
-  listCard.innerHTML  = places;
+  }
+  lastSelectId = ""
+  listCard.innerHTML = "";
+  listCard.innerHTML = places;
 }
 
 
@@ -138,7 +139,6 @@ async function findPlace(value) {
 }
 let lastSelectId = ""
 function dragToPointer(index) {
-  debugger
   if (lastSelectId) {
     const preSelectedItem = document.getElementById(lastSelectId);
     preSelectedItem.classList.remove("active");

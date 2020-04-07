@@ -19,60 +19,81 @@
     main {
       height: 90vh;
     } */
+    .cards-cstm::-webkit-scrollbar {
+      /* WebKit */
+      width: 3px;
+      height: 0;
+    }
+
+    .cards-cstm::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background:grey; 
+      /* background:#007bff;  */
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
+
+    .cards-cstm {
+      overflow-y: scroll;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* Internet Explorer 10+ */
+    }
   </style>
 </head>
 
 <body>
-<div class="">
-  <nav class="navbar navbar-bottom navbar-expand-lg navbar-primary bg-dark">
+  <div class="">
+    <nav class="navbar navbar-bottom navbar-expand-lg navbar-primary bg-dark">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <a class="navbar-brand" href="index.html">
-        <i class="fas fa-map-marked mr-4"></i>Place Locator
-      </a>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a href="index.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="add.html" class="nav-link">Add Place</a>
-        </li>
-      </ul>
-      <button class="btn btn-outline-primary mr-sm-2" onclick="getNearBy()">Near Me</button>
-      <form class="form-inline my-2 my-lg-0" id="search-form" onsubmit="findPlace()">
-        <input class="form-control mr-sm-2" id="search-input" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-    
-  </nav>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-map-marked mr-4"></i>Place Locator
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="add.html" class="nav-link">Add Place</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-primary mr-sm-2" onclick="getNearBy()">Near Me</button>
+        <form class="form-inline my-2 my-lg-0" id="search-form" onsubmit="findPlace()">
+          <input class="form-control mr-sm-2" id="search-input" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
 
-  <main class="container my-3">
+    </nav>
 
-    <div class="row justify-content-between" >
-      <div class="col-lg-2">
-        <div class="card" style="width: 18rem;;height: 80vh;">
-          <div class="card-header text-center">
-            List
+    <main class="container my-3">
+
+      <div class="row justify-content-between">
+        <div class="col-lg-2">
+          <div class="card" style="width: 18rem;;height: 80vh;">
+            <div class="card-header text-center">
+              List
+            </div>
+            <ul id="list" class="list-group list-group-flush cards-cstm">
+            </ul>
           </div>
-          <ul id="list" class="list-group list-group-flush"  style="overflow-y: scroll">
-          </ul>
         </div>
+
+        <!-- map render -->
+        <div id="map" class="col-lg-8" style="border-radius: 5px;">
+        </div>
+
       </div>
 
-      <!-- map render -->
-      <div id="map" class="col-lg-8" style="border-radius: 5px;">
-      </div>
-
-    </div>
-
-  </main>
-</div>  
+    </main>
+  </div>
   <script src="js/map.js"></script>
 </body>
 
